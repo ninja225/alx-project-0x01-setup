@@ -33,7 +33,7 @@ interface UserCardProps {
     skills?: string[];
 }
 
-const UserCard = <UserProps,>(props: UserCardProps) => {
+const UserCard: React.FC<UserCardProps> & React.ComponentType<UserProps> = (props: UserCardProps) => {
     const {
         id,
         name,
