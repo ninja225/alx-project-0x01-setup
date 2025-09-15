@@ -2,9 +2,10 @@ import PostCard from "@/components/common/PostCard";
 import PostModal from "@/components/common/PostModal";
 import Header from "@/components/layout/Header";
 import { PostData } from "@/interfaces";
+import { PostProps } from "@/interfaces";
 import { useState } from "react";
 
-const Posts: React.FC<{ posts: Array<{userId: number; id: number; title: string; body: string}> }> = ({ posts }) => {
+const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
     const [isModalOpen, setModalOpen] = useState(false);
     const [, setPost] = useState<PostData | null>(null);
 
@@ -25,7 +26,7 @@ const Posts: React.FC<{ posts: Array<{userId: number; id: number; title: string;
                 </div>
                 <div className="grid grid-cols-3 gap-2 ">
                     {
-                        posts?.map(({ title, body, userId, id }, key: number) => (
+                        posts?.map(({ title, body, userId, id }: PostProps, key: number) => (
                             <PostCard title={title} body={body} userId={userId} id={id} key={key} />
                         ))
                     }
