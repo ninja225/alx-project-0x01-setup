@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Button from './Button';
+import { UserProps } from '../../interfaces';
 
 interface UserCardProps {
     id: number;
@@ -32,22 +33,23 @@ interface UserCardProps {
     skills?: string[];
 }
 
-const UserCard: React.FC<UserCardProps> = ({
-    id,
-    name,
-    username,
-    email,
-    phone,
-    website,
-    company,
-    address,
-    avatar,
-    role,
-    joinDate,
-    postsCount = 0,
-    isActive = true,
-    skills = [],
-}) => {
+const UserCard = <UserProps,>(props: UserCardProps) => {
+    const {
+        id,
+        name,
+        username,
+        email,
+        phone,
+        website,
+        company,
+        address,
+        avatar,
+        role,
+        joinDate,
+        postsCount = 0,
+        isActive = true,
+        skills = [],
+    } = props;
     // Generate initials from name
     const getInitials = (fullName: string) => {
         return fullName

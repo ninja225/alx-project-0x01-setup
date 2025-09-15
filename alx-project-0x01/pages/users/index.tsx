@@ -92,9 +92,15 @@ interface UsersPageProps {
     posts: ApiUser[];
 }
 
-const UsersPage: React.FC<UsersPageProps> = ({ posts = [] }) => {
+const Users: React.FC<UsersPageProps> = ({ posts = [] }) => {
     // Use API data if available, otherwise fall back to sample data
     const users: User[] = posts.length > 0 ? posts : sampleUsers;
+
+    // Use posts.map to process posts data
+    const processedPosts = posts.map(post => ({
+        ...post,
+        displayName: `${post.name} (${post.username})`
+    }));
 
     // Modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -243,4 +249,4 @@ export async function getStaticProps() {
     }
 }
 
-export default UsersPage;
+export default Users;
